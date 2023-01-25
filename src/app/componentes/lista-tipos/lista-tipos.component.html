@@ -1,0 +1,18 @@
+<div>
+    <div class="flex flex-row justify-between items-center py-2">
+        <h2 class="text-xl font-bold mb-1">Funciones</h2>
+        <div>
+            <button class="bg-[#0D47A1] text-white scale-90" mat-button>
+                Agregar
+                <mat-icon class="text-white" [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="flex justify-start items-center w-full">
+        <div style="aspect-ratio: 1 / 1" *ngFor="let tag of listaTags" [ngStyle]="{'background-color': '#'+tag.colorBg,'color': '#'+tag.colorText}" class="flex flex-col justify-center items-center text-center rounded-xl mx-1 py-2 w-full">
+            <mat-icon [ngStyle]="{'color': '#'+tag.colorText}" [svgIcon]="'heroicons_outline:'+tag.icon"></mat-icon>
+            <h2>{{tag.nombre}}</h2>
+        </div>
+    </div>
+</div>

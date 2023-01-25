@@ -1,0 +1,201 @@
+        <div>
+
+            <ng-container *ngIf="cajaVisible">
+                <div matRipple [matRippleColor]="'rgba(100, 181, 246, 0.2)'" class="p-2 rounded-lg cursor-pointer" [ngStyle]="{'background-color': getSeccionCajaSeleccionada(0)}" (click)="cambiarIndiceFlujoIndice(0)">
+                    <div class="flex justify-between">
+                        <div class="flex justify-center items-start">
+                            <h2 class="text-xl font-bold text-sm sm:text-lg text-white text-white">Dinero Ingresar</h2>
+                            <mat-icon *ngIf="estaSeleccionada(0)" class="text-white" [svgIcon]="'heroicons_outline:hand'"></mat-icon>
+                        </div>
+    
+                        <div>
+                            <button mat-button class="bg-[#01579B] text-white">
+                                Ing
+                                <mat-icon style="transform: scaleX(-1);" class="text-white opacity-60" [svgIcon]="'heroicons_outline:login'"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <div class="flex justify-center items-center text-white">
+                        $<span class="text-2xl">
+                            {{flujoDinero[0].total}}
+                        </span>
+                    </div>
+    
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg text-white"><strong>Mon:</strong>
+                            ${{flujoDinero[0].valorTotalMonedas}}
+                        </span>
+                        <span class="text-lg text-white"><strong>Bil:</strong>
+                            ${{flujoDinero[0].valorTotalBilletes}}
+                        </span>
+                    </div>
+                </div>
+    
+                <div matRipple [matRippleColor]="'rgba(100, 181, 246, 0.2)'" class="p-2 rounded-lg mt-2 cursor-pointer" [ngStyle]="{'background-color': getSeccionCajaSeleccionada(1)}" (click)="cambiarIndiceFlujoIndice(1)">
+    
+                    <div class="flex justify-between">
+                        <div class="flex justify-center items-start">
+                            <h2 class="text-xl font-bold text-sm sm:text-lg text-white text-white">Dinero sacar</h2>
+                            <mat-icon *ngIf="estaSeleccionada(1)" class="text-white" [svgIcon]="'heroicons_outline:hand'"></mat-icon>
+                        </div>
+                        
+                        <div>
+                            <button mat-button class="bg-[#0277BD] text-white">
+                                Ext
+                                <mat-icon class="text-white opacity-60" [svgIcon]="'heroicons_outline:logout'"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <div class="flex justify-center items-center text-white">
+                        $<span class="text-2xl">
+                            {{flujoDinero[1].total}}
+                        </span>
+                    </div>
+    
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg text-white"><strong>Mon:</strong>
+                            ${{flujoDinero[1].valorTotalMonedas}}
+                        </span>
+                        <span class="text-lg text-white"><strong>Bil:</strong>
+                            ${{flujoDinero[1].valorTotalBilletes}}
+                        </span>
+                    </div>
+                </div>
+    
+                <div matRipple [matRippleColor]="'rgba(100, 181, 246, 0.2)'" class="p-2 rounded-lg mt-2 cursor-pointer" [ngStyle]="{'background-color': getSeccionCajaSeleccionada(2)}" (click)="cambiarIndiceFlujoIndice(2)">
+                    <div class="flex justify-between">
+                        <div class="flex justify-center items-start">
+                            <h2 class="text-xl font-bold text-sm sm:text-lg text-white text-white">Dinero caja</h2>
+                            <mat-icon *ngIf="estaSeleccionada(2)" class="text-white" [svgIcon]="'heroicons_outline:hand'"></mat-icon>
+                        </div>
+                    </div>
+    
+                    <div class="flex justify-center items-center text-white">
+                        $<span class="text-2xl">
+                            {{flujoDinero[2].total}}
+                        </span>
+                        <button mat-icon-button class="text-white">
+                            <mat-icon [svgIcon]="'heroicons_outline:currency-dollar'"></mat-icon>
+                        </button>
+                    </div>
+    
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg text-white"><strong>Mon:</strong>
+                            ${{flujoDinero[2].valorTotalMonedas}}
+                        </span>
+                        <span class="text-lg text-white"><strong>Bil:</strong>
+                            ${{flujoDinero[2].valorTotalBilletes}}
+                        </span>
+                    </div>
+    
+                    <div class="w-full mt-5 flex">
+                        <button mat-button class="bg-[#C62828] text-white text-md m-1">
+                            Vac
+                            <mat-icon class="text-white opacity-60" [svgIcon]="'heroicons_outline:inbox'"></mat-icon>
+                        </button>
+                        <button mat-button class="bg-[#01579B] text-white mt-1 text-md m-1">
+                            Entregar
+                            <mat-icon class="text-white opacity-60" [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div *ngIf="!cajaVisible" style="writing-mode: vertical-rl; transform: rotate(180deg);" class="w-full justify-between h-full grid grid-cols-7 gap-2">
+
+                <div matRipple [matRippleColor]="'rgba(100, 181, 246, 0.2)'" class="p-2 rounded-lg cursor-pointer bg-slate-200 col-span-3" (click)="cambiarIndiceFlujoIndice(2)">
+                    <div class="flex justify-between">
+                        <div class="flex justify-center items-start">
+                            <h2 class="text-xl font-bold text-sm sm:text-lg">Dinero caja</h2>
+                            <mat-icon *ngIf="estaSeleccionada(2)" [svgIcon]="'heroicons_outline:hand'"></mat-icon>
+                        </div>
+                    </div>
+    
+                    <div class="flex justify-center items-center">
+                        $<span class="text-2xl">
+                            {{flujoDinero[2].total}}
+                        </span>
+                    </div>
+    
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-col my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">Mon</div>
+                            <div class="leading-none text-left">
+                                ${{flujoDinero[2].valorTotalMonedas}}
+                            </div>
+                        </div>
+                        <div class="flex flex-col my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">Bill</div>
+                            <div class="leading-none text-right">
+                                ${{flujoDinero[2].valorTotalBilletes}}
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+
+                <div matRipple [matRippleColor]="'rgba(100, 181, 246, 0.2)'" class="p-2 rounded-lg cursor-pointer bg-slate-200 col-span-2" (click)="cambiarIndiceFlujoIndice(0)">
+                    <div class="flex justify-between">
+                        <div class="flex justify-center items-start">
+                            <h2 class="text-xl font-bold text-sm sm:text-lg text-black">Dinero Ingresar</h2>
+                            <mat-icon *ngIf="estaSeleccionada(0)" [svgIcon]="'heroicons_outline:hand'"></mat-icon>
+                        </div>
+                    </div>
+    
+                    <div class="flex justify-center items-center text-black">
+                        $<span class="text-2xl">
+                            {{flujoDinero[0].total}}
+                        </span>
+                    </div>
+    
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-col my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">Mon</div>
+                            <div class="leading-none text-left">
+                                ${{flujoDinero[0].valorTotalMonedas}}
+                            </div>
+                        </div>
+                        <div class="flex flex-col my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">Bill</div>
+                            <div class="leading-none text-right">
+                                ${{flujoDinero[0].valorTotalBilletes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div matRipple [matRippleColor]="'rgba(100, 181, 246, 0.2)'" class="p-2 rounded-lg cursor-pointer justify-between items-between bg-slate-200 col-span-2" (click)="cambiarIndiceFlujoIndice(1)" style="writing-mode: vertical-rl;">
+    
+                    <div class="flex justify-between">
+                        <div class="flex justify-center items-start">
+                            <h2 class="text-xl font-bold text-sm sm:text-lg">Dinero sacar</h2>
+                            <mat-icon *ngIf="estaSeleccionada(1)" [svgIcon]="'heroicons_outline:hand'"></mat-icon>
+                        </div>
+                    </div>
+    
+                    <div class="flex justify-center items-center">
+                        $<span class="text-2xl">
+                            {{flujoDinero[1].total}}
+                        </span>
+                    </div>
+    
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-col my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">Mon</div>
+                            <div class="leading-none text-left">
+                                ${{flujoDinero[1].valorTotalMonedas}}
+                            </div>
+                        </div>
+                        <div class="flex flex-col my-3">
+                            <div class="text-sm font-medium leading-none text-secondary">Bill</div>
+                            <div class="leading-none text-right">
+                                ${{flujoDinero[1].valorTotalBilletes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>

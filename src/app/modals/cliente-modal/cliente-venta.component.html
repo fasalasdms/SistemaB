@@ -1,0 +1,227 @@
+<div class="bg-card p-2 rounded-xl flex flex-col  max-h-screen ">
+    <!-- <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <h2 class="text-lg font-medium">Crear Cliente </h2>
+        <button (click)="close()" mat-icon-button [tabIndex]="-1">
+            <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+    <br> -->
+    <div fxLayout="column" class=" pr-3 sm:pr-5 pl-6 sm:pl-8" class="cont-content-modal">
+
+        <div class="cont-table">
+
+            <mat-horizontal-stepper class="bg-gray-100  rounded-xl" [linear]="true">
+                <form [formGroup]="step1" class="p-2 shadow rounded overflow-hidden">
+                    <mat-step>
+                        <ng-template matStepLabel>Datos Personales</ng-template>
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pr-3">
+                                <input matInput class="text_transfor" [formControlName]="'nombre1'" [placeholder]="'Primer Nombre'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                                </mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <input matInput class="text_transfor" [formControlName]="'nombre2'" [placeholder]="'Segundo Nombre'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <input matInput class="text_transfor" [formControlName]="'apellido1'" [placeholder]="'Primer Apellido'"
+                                >
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                                </mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="flex-auto">
+                                <input matInput class="text_transfor" [formControlName]="'apellido2'" [placeholder]="'Segundo Apellido'"
+                                >
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                                </mat-icon>
+                            </mat-form-field>
+
+                        </div>
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <input type="text"  matInput [formControlName]="'fechaCumpleanio'" [placeholder]="'Cumpleaños'"
+                                    matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+                            <mat-form-field class="flex-auto">
+                                <input matInput [formControlName]="'email'" [placeholder]="'Correo'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:mail'"></mat-icon>
+                            </mat-form-field>
+
+                        </div>
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+
+                            <mat-form-field class="flex-auto">
+                                <input type="tel" matInput [formControlName]="'telefono1'" [placeholder]="'telefono 1'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:phone'"></mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="flex-auto">
+                                <input type="tel" matInput [formControlName]="'telefono2'"
+                                    [placeholder]="'telefono 2'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:phone'"></mat-icon>
+                            </mat-form-field>
+
+                        </div>
+                        <div class="flex justify-between">
+                            <button (click)="openEditModal()" class="px-8 " mat-flat-button [color]="'primary'" type="button">
+                                <mat-icon svgIcon="heroicons_outline:credit-card"></mat-icon>
+                            </button>
+                            <button class="px-8" mat-flat-button [color]="'primary'" type="button" matStepperNext>
+                                Siguiente
+                            </button>
+                        </div>
+                    </mat-step>
+                </form>
+                <form [formGroup]="step2" class="p-2 shadow rounded overflow-hidden">
+                    <mat-step>
+                        <ng-template matStepLabel>Datos Juridicos </ng-template>
+                        <!-- <p class="my-6 font-medium">
+                        People here will get to know you with this information
+                    </p> -->
+
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pr-3">
+                                <mat-select [formControlName]="'tipoIdentificacion'"
+                                    [placeholder]="'tipo Identificacion'">
+                                    <mat-option value="CC">CC</mat-option>
+                                    <mat-option value="NIT">NIT</mat-option>
+                                    <!-- <mat-option value="language-3">Language 3</mat-option> -->
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field class="flex-auto gt-xs:pr-3">
+                                <input matInput class="text_transfor" [formControlName]="'nit'" [placeholder]="'Documento'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+
+                        </div>
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'actividad'" [placeholder]="'Actividad'">
+                                    <mat-option *ngFor="let data of actividades" value="{{data.id}}">
+                                        {{data.descripcion}}</mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'origen'" [placeholder]="'Tipo Origen'">
+                                    <mat-option *ngFor="let data of origenes" value="{{data.id}}">{{data.descripcion}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'tipoPerfil'" [placeholder]="'tipoPerfil'">
+                                    <mat-option *ngFor="let data of perfiles" value="{{data.id}}">{{data.descripcion}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'formaPago'" [placeholder]="'Forma de Pago'">
+                                    <mat-option *ngFor="let data of formaPago" value="{{data.id}}">{{data.descripcion}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'tipoTributario'" [placeholder]="'tipoPerfil'">
+                                    <mat-option value="1">Natural</mat-option>
+                                    <mat-option value="2">Juridico</mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class=" flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'estado'" [placeholder]="'Estado'">
+                                    <mat-option *ngFor="let data of Estado" value="{{data.id}}">{{data.descripcion}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button class="px-8 mr-2" mat-flat-button [color]="'accent'" type="button"
+                                matStepperPrevious>
+                                Atrás
+                            </button>
+                            <button class="px-8" mat-flat-button [color]="'primary'" type="button" matStepperNext>
+                                Siguiente
+                            </button>
+                        </div>
+                    </mat-step>
+                </form>
+
+                <form [formGroup]="step3" class="p-2 shadow rounded overflow-hidden">
+                    <mat-step>
+                        <ng-template matStepLabel>Direccion</ng-template>
+
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'pais'" [placeholder]="'Pais'">
+                                    <mat-option *ngFor="let data of paises" (blur)="onEnterDepartamento(data.id)" (click)="onEnterDepartamento(data.id)" value="{{data.id}}">{{data.codigo}} - {{data.descripcion}} </mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:location-marker'">
+                                </mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'departamento'" [placeholder]="'Departamento'">
+                                    <mat-option *ngFor="let data of Departamento" (blur)="onEnterCiudad(data.id)" (click)="onEnterCiudad(data.id)" value="{{data.id}}">{{data.descripcion}}</mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:location-marker'">
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <mat-select [formControlName]="'idZona'" [placeholder]="'Ciudad'">
+                                    <mat-option *ngFor="let data of Ciudades" value="{{data.codigo}}">{{data.descripcion}}</mat-option>
+                                </mat-select>
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:location-marker'">
+                                </mat-icon>
+                            </mat-form-field>
+                            <mat-form-field class="flex-auto gt-xs:pl-3">
+                                <input matInput class="text_transfor" [formControlName]="'direccion'" [placeholder]="'Direccion'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:location-marker'">
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="flex justify-end mt-8">
+                            <button class="px-8 mr-2" mat-flat-button [color]="'accent'" type="button"
+                                matStepperPrevious>
+                                Atrás
+                            </button>
+                            <button (click)="saveUser()" class="px-8" mat-flat-button [color]="'primary'" type="button">
+                                Guardar
+                            </button>
+                        </div>
+                    </mat-step>
+                </form>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>

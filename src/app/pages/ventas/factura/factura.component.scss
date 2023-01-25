@@ -1,0 +1,258 @@
+    table {
+
+        width: 100%;
+
+        border-collapse: collapse !important;
+
+        border-radius: 1px;
+
+        margin-top: 20px;
+
+        margin-bottom: 20px;
+
+    }
+
+    th,
+    td {
+        padding: 0 8px !important;
+        height: 28px !important;
+        min-height: 28px !important;
+    }
+
+    .table>thead>tr>th {
+        height: 30px !important;
+    }
+
+    .table1 {
+
+        margin-top: 20px;
+
+    }
+
+    .table2 {
+
+        margin-bottom: 20px;
+        margin-top: 5px;
+
+    }
+
+    .b-logo {
+        width: 132px;
+        float: left;
+        top: 12px;
+        position: relative;
+    }
+
+    .b-header {
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 0.6px;
+        color: black !important;
+        margin-top: 22px;
+        display: inline-block;
+        margin-bottom: 0;
+        margin-left: 12px;
+    }
+
+    .b-p {
+        text-align: center;
+
+        font-weight: 500;
+        font-size: 10px;
+        margin-top: 6px;
+        letter-spacing: 0.3px;
+        line-height: 1.5;
+        left: 6px;
+        position: relative;
+    }
+
+    .b-p2 {
+        text-align: center;
+        font-size: 10px;
+        margin-top: 28px;
+    }
+
+    .p-table {
+        border-collapse: separate !important;
+        border-spacing: 0;
+
+
+        border-radius: 6px;
+        -moz-border-radius: 5px;
+        margin: 0;
+    }
+
+    .p-tableheader {
+        // font-family: impact;
+        text-align: center;
+        background-color: #eee !important;
+    }
+
+    .p-tabledate {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .p-impact {
+        // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin-right: 4px;
+        color: #555 !important;
+    }
+
+    .p-rightline {
+        border-right: 1px solid #777 !important;
+    }
+
+    .p-topline {
+        border-top: 1px solid #777 !important;
+    }
+
+    .p-bottomline {
+        border-bottom: 1px solid #777 !important;
+    }
+
+    .p-original {
+        display: inline;
+        font-size: 20px;
+        color: red !important;
+        letter-spacing: 1.1px;
+        font-weight: 500;
+        position: relative;
+        left: 8px;
+    }
+
+    .p-optionalContainer {
+        width: 80%;
+        min-width: 500px;
+        position: relative;
+        top: -84px;
+        height: 0px;
+    }
+
+    .p-lettercontainer {
+        padding: 8px;
+        border: 1px solid #777;
+        border-radius: 4px;
+        margin-top: 10px;
+        margin-right: 22px;
+    }
+
+    .p-recibed {
+        display: inline-block;
+        float: right;
+        position: relative;
+        left: -100px;
+        top: 14px;
+        text-align: center;
+    }
+
+    .bold {
+
+        color: #333;
+
+    }
+
+    pre {
+
+        color: #555;
+
+    }
+
+    footer {
+
+        text-align: center;
+
+    }
+
+    .w_50 {
+
+        display: inline-block;
+
+        width: 50%;
+
+        text-align: center;
+
+    }
+
+    // .p-datetitle {
+    //     // font-family: impact;
+    //     font-size: 14px;
+    // }
+
+    .line {
+
+        border-bottom: 1px solid #333;
+
+        margin: 0 auto;
+
+        width: 50%;
+
+        display: block;
+
+    }
+
+    .page-header {
+        display: none;
+    }
+
+    * {
+        // font-size: 15px;
+        // font-family: 'system-ui';
+    }
+
+    td,
+    th,
+    tr,
+    table {
+        border-collapse: collapse;
+    }
+
+    td.producto,
+    th.producto {
+        width: 85px;
+        max-width: 85px;
+    }
+
+    td.cantidad,
+    th.cantidad {
+        width: 95px;
+        max-width: 95px;
+        word-break: break-all;
+    }
+
+    td.precio,
+    th.precio {
+        width: 100px;
+        max-width: 100px;
+        word-break: break-all;
+    }
+
+    .centrado {
+        text-align: center;
+        align-content: center;
+    }
+
+    .ticket {
+        width: 320px;
+        max-width: 320px;
+    }
+
+    img {
+        max-width: inherit;
+        width: inherit;
+    }
+
+    @media print {
+
+        .no-print,
+        .no-print * {
+            display: none !important;
+        }
+    }
+
+    .factura_centrar{
+        
+        justify-content: center;
+        display: flex;
+
+    }

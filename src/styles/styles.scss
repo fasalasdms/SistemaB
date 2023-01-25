@@ -1,0 +1,55 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+.azul-dms{
+    background-color: #2474B9;
+}
+
+.bg-cajero{
+    background-image: url('../assets/images/backgrounds/cajero.jpg');
+    background-size: cover;
+}
+
+.bg-DMS-sign{
+    background-color: rgba(51,51,153,0.9);
+}
+
+.color-DMS-1{
+    background-color: #333399;
+}
+
+.gradient-DMS-1{
+    background: rgb(51,51,153);
+    background: linear-gradient(-45deg, rgba(51,51,153,1) 37%, rgba(38,117,187,1) 100%);
+}
+
+.mat-tab-label-container{
+    padding: 5px 0px !important;
+}
+
+.mat-tab-body-content{
+    padding: 0px !important;
+}
+
+.morado-1{
+    background-color: rgba(26, 35, 126, 0.5);
+}
+button{
+    background: #2575BB;
+}
+body.light .mat-flat-button.mat-primary{
+    background: #2575BB;
+}
+
+.blue_dms{
+    background: #2575bbbf !important;
+}
+
+.bg-blue-100-10{
+    background-color:rgba(37, 150, 190,0.1);
+}
+.text_transfor{
+    text-transform: capitalize;
+}

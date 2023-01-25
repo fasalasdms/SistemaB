@@ -1,0 +1,13 @@
+<section class="text-center p-2">
+    <div class="flex justify-center items-center flex-col">
+        <div class="bg-[#ECEFF1] p-2 w-20 h-20 flex justify-center items-center rounded-full mb-4">
+            <mat-icon class="icon-size-8 leading-5 text-red-700 opacity-50"
+            [svgIcon]="'heroicons_outline:exclamation'"></mat-icon>
+        </div>
+        <p class="text-xl leading-5 opacity-50">Está seguro de que deseallevar a cabo<br> esta acción.</p>
+    </div>
+    <div class="mt-5">
+        <button mat-button (click)="dialogRef.close(false)" [color]="'warn'">Cancelar</button>
+        <button mat-button class="ml-2" (click)="dialogRef.close(true)">Aceptar</button>
+    </div>
+</section>

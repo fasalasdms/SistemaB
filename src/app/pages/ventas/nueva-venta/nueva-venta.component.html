@@ -1,0 +1,279 @@
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8 w-full m-8">
+    <div class="xl:col-span-2 flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden">
+        <div class="flex border-b">
+            <!-- Selected product form -->
+            <form class="flex flex-col w-full" [formGroup]="selectedForm">
+
+                <!-- <div class="flex flex-col sm:flex-row p-8"> -->
+                <div class="p-8">
+                    <!-- datos cliente -->
+                    <div class="flex flex-auto flex-wrap justify-between">
+                        <div class="flex flex-col w-full lg:w-1/4 sm:p-1">
+                            <div class="mr-4 text-lg font-medium tracking-tight leading-6 truncate">Datos del cliente</div>
+                        </div>
+                        <div class="flex  w-full lg:w-1/4 sm:p-1 justify-end">
+                            <button (click)="openClienteModal()" style="background-color: #2575BB;" class="ml-2" mat-icon-button>
+                                <mat-icon style="color:white" svgIcon="person_add_alt_1"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <hr style="margin: 10px 0px;">
+                    <div class="flex flex-auto flex-wrap">
+                        <div class="flex flex-col w-full lg:w-2/4 sm:p-1">
+
+                            <mat-form-field class="w-full">
+                                <mat-label>Documento</mat-label>
+                                <input matInput [formControlName]="'name'">
+                            </mat-form-field>
+
+                        </div>
+                        <!-- segunda columna -->
+                        <div class="flex flex-col w-full lg:w-1/4 sm:p-1">
+                            <mat-form-field class="w-full">
+                                <mat-label>Cliente</mat-label>
+                                <!-- <span matSuffix>lbs.</span> -->
+                                <input matInput [formControlName]="'weight'">
+                            </mat-form-field>
+                        </div>
+                        <div class="flex flex-col w-full lg:w-1/4 sm:p-1">
+                            <mat-form-field class="w-full">
+                                <mat-label>Telefono</mat-label>
+                                <!-- <span matSuffix>lbs.</span> -->
+                                <input matInput [formControlName]="'weight'">
+                            </mat-form-field>
+                   
+                        </div>     
+                      
+                    </div> 
+                   <!-- agregar producto -->
+                   <div class="mr-4 text-lg font-medium tracking-tight leading-6 truncate">Agregar Producto</div>
+                   <hr style="margin: 10px 0px;">
+                    <div class="flex flex-auto flex-wrap">
+                         <div class="flex flex-col w-full lg:w-2/4 sm:p-1">
+     
+                             <mat-form-field class="w-full">
+                                 <mat-label>Codigo de barras </mat-label>
+                                 <input matInput [formControlName]="'name'">
+                             </mat-form-field>
+     
+                         </div>
+                         <!-- segunda columna -->
+                         <div class="flex flex-col w-full lg:w-1/4 sm:p-1">
+                             <mat-form-field class="fuse-mat-no-subscript w-full">
+                                 <mat-label>Unidad Medida</mat-label>
+                                 <mat-select id="estado" [formControlName]="'modo_pago'" [placeholder]="'Modo de pago'">
+                                     <mat-option value="1">UND</mat-option>
+                                     <mat-option value="1">KG</mat-option>
+                                     <mat-option value="2">LB</mat-option>
+                                     <mat-option value="3">LTR</mat-option>
+                                 </mat-select>
+                             </mat-form-field>
+                         </div>
+     
+                         <div class="flex flex-col w-full lg:w-1/4 sm:p-1">
+                             <mat-form-field class="w-full">
+                                 <mat-label>stock</mat-label>
+                                 <!-- <span matSuffix>lbs.</span> -->
+                                 <input type="number" matInput [formControlName]="'weight'">
+                             </mat-form-field>
+                         </div>
+                     </div>
+
+                </div>
+                
+                <div class="flex items-between justify-between w-full border-t px-8 py-4">
+                         <div class="flex flex-auto flex-wrap">
+                             <div class="flex flex-col w-full lg:w-2/4 sm:p-1">
+     
+                                 <mat-form-field class="fuse-mat-no-subscript w-full">
+                                     <mat-select id="estado" [formControlName]="'modo_pago'" [placeholder]="'Modo de pago'">
+                                         <mat-option (click)="ServicioSeleccionado(1)" [value]="1">Contado
+                                         </mat-option>
+                                         <mat-option (click)="ServicioSeleccionado(1)" [value]="2">Crédito
+                                         </mat-option>
+                                     </mat-select>
+                                 </mat-form-field>
+     
+                             </div>
+                             <!-- segunda columna -->
+                             <div class="flex flex-col w-full lg:w-1/4 sm:p-1">
+                                 <mat-form-field *ngIf="servicio==getServicioSeleccionado() && servicio!=0"
+                                     class="fuse-mat-no-subscript w-full">
+                                     <mat-select id="estado" [formControlName]="'name'" [placeholder]="'Tipo de pago'">
+                                         <mat-option  value="Efectivo">
+                                             Efectivo
+                                         </mat-option>
+                                         <mat-option value="Transferencia">
+                                             Transferencia
+                                         </mat-option>
+                                         <mat-option value="tarjeta de credito">
+                                             tarjeta de credito
+                                         </mat-option>
+                                         <mat-option value="otros medios de pago">
+                                             otros medios de pago
+                                         </mat-option>
+     
+     
+                                     </mat-select>
+                                 </mat-form-field>
+                             </div>
+     
+                             <div class="flex flex-col w-full lg:w-1/4 sm:p-1">
+                                 <mat-form-field class="fuse-mat-no-subscript w-full">
+                                     <!-- <mat-label>Paga Con</mat-label> -->
+                                     <input [placeholder]="'Paga Con'" matInput [formControlName]="'name'">
+                                 </mat-form-field>
+                             </div>
+                         </div>
+                     </div>
+                    <div class="flex items-end justify-end w-full border-t px-8 py-4">
+                
+                        <div class="flex items-center mt-auto">
+                            <button  [routerLink]="['/factura']" color="primary" class="ml-2" mat-flat-button>
+                                Terminar Venta
+                            </button>
+                        </div>
+                        <div class="flex items-center mt-auto">
+                            <button class="ml-2" mat-stroked-button>
+                                Cancelar Venta
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col p-8">
+                        <!-- <div class="font-medium text-secondary">Overview</div> -->
+                        <div class="flex-auto grid grid-cols-4 gap-4 ">
+                            <!-- Fixed -->
+                            <div
+                                class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                <div class="text-3xl font-semibold leading-none tracking-tight">
+                                    $167,900.00
+                                </div>
+                                 <div class="mt-1 text-sm sm:text-2xl font-medium">Sub total</div>
+                            </div>
+                            <!-- Won't fix -->
+                            <div
+                                class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                <div class="text-3xl font-semibold leading-none tracking-tight">
+                                   $0.00
+                                </div>
+                                 <div class="mt-1 text-sm sm:text-2xl font-medium">Descuento</div>
+                            </div>
+                            <!-- Re-opened -->
+                            <div
+                                class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                <div class="text-3xl font-semibold leading-none tracking-tight">
+                                   $31,901.00
+                                </div>
+                                 <div class="mt-1 text-sm sm:text-2xl font-medium">Iva</div>
+                            </div>
+                            <!-- Needs triage -->
+                            <div
+                                class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-gray-100 text-secondary dark:bg-white dark:bg-opacity-5">
+                                <div class="text-3xl font-semibold leading-none tracking-tight">
+                                   $199,801.00
+                                </div>
+                                 <div class="mt-1 text-sm sm:text-2xl font-medium">Total</div>
+                            </div>
+
+                          <!--Puntos -->
+                            <div style="background: #2575bbbf !important; color: #ffffff !important;"
+                                class="col-span-2 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-blue-50 text-blue-800 dark:bg-white dark:bg-opacity-5 dark:text-blue-400">
+                                <div class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                                    120
+                                </div>
+                                <div class="mt-1 text-sm sm:text-lg font-medium">Puntos Acumulados</div>
+                            </div>
+                            <!-- Closed -->
+                            <div style="background: #2575bbbf !important; color: #ffffff !important;"
+                                class="col-span-2 flex flex-col items-center justify-center py-8 px-1 rounded-2xl bg-green-50 text-green-800 dark:bg-white dark:bg-opacity-5 dark:text-green-500">
+                                <div class="text-5xl sm:text-7xl font-semibold leading-none tracking-tight">
+                                  5230
+                                </div>
+                                <div class="mt-1 text-sm sm:text-lg font-medium">Puntos Cliente</div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div  class="flex flex-col flex-auto p-6 bg-card rounded-2xl shadow">
+        <div class="mb-1 flex items-center">
+            <div class="flex flex-col">
+                <div class="mr-4 text-lg font-medium tracking-tight leading-6 truncate">Listado de Productos</div>
+                <!-- <div class="text-secondary font-medium">Monthly budget summary</div> -->
+            </div>
+            <div class="ml-auto -mt-2 -mr-2">
+             <div class="mr-4 text-lg font-medium tracking-tight leading-6 truncate">N° {{dataLength}}</div>
+            </div>
+        </div>
+        <hr style="margin: 10px 0px;">
+        <div style="overflow: auto; height: 500px; padding: 1px !important;" class="flex flex-col flex-auto p-6 bg-card rounded-2xl shadow">
+                <div *ngFor="let item of dataSource" class="mt-3 space-y-8">
+        
+                       <div class="relative flex flex-col flex-auto p-6 pr-3 pb-3 bg-card rounded-2xl shadow overflow-hidden">
+                           <div class="absolute bottom-0 right-0 w-24 h-24 -m-6">
+                               <mat-icon class="icon-size-24 opacity-25 text-green-500 dark:text-green-400"
+                                   [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                           </div>
+                           <div class="flex items-center">
+                               <div class="flex flex-col">
+                                   <div class="tracking-tight leading-6 truncate"><strong>{{item.producto}}</strong></div>
+                                   <div class="text-green-600 font-medium text-sm">
+                                       Cantidad {{item.cantidad}}
+                                   </div>
+                                   <div class="text-green-600 font-medium text-sm">
+                                       Descuento {{item.descuento  | currency:'USD'}}
+                                   </div>
+                               </div>
+                               <div class="ml-auto -mt-2">
+                                   <button mat-icon-button [matMenuTriggerFor]="previousStatementMenu">
+                                       <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
+                                   </button>
+                                   <mat-menu #previousStatementMenu="matMenu">
+                                       <button (click)="openEditModal('Cantidad')" mat-menu-item>
+                                           <span class="flex items-center">
+                                               <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:credit-card'">
+                                               </mat-icon>
+                                               <span>Editar Cantidad</span>
+                                           </span>
+                                       </button>
+                                       <button (click)="openEditModal('Precio')" mat-menu-item>
+                                           <span class="flex items-center">
+                                               <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:cash'"></mat-icon>
+                                               <span>Editar Precio</span>
+                                           </span>
+                                       </button>
+                                       <button (click)="openEditModal('Descuento')" mat-menu-item>
+                                           <span class="flex items-center">
+                                               <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:receipt-tax'">
+                                               </mat-icon>
+                                               <span>Editar Descuento</span>
+                                           </span>
+                                       </button>
+                                   </mat-menu>
+                               </div>
+                           </div>
+                           <div class="flex flex-row flex-wrap mt-4 -mx-6">
+                               <div class="flex flex-col mx-6 my-3">
+                                   <div class="text-sm font-medium leading-none text-secondary">Precio</div>
+                                   <div class="mt-2 leading-none">
+                                       {{item.precio | currency:'USD'}}</div>
+                               </div>
+                               <div class="flex flex-col mx-6 my-3">
+                                   <div class="text-sm font-medium leading-none text-secondary">Iva</div>
+                                   <div class="mt-2 leading-none">
+                                       {{item.iva | currency:'USD'}}</div>
+                               </div>
+                               <div class="flex flex-col mx-6 my-3">
+                                   <div class="text-sm font-medium leading-none text-secondary">Total</div>
+                                   <div class="mt-2 leading-none">
+                                       {{item.total | currency:'USD'}}</div>
+                               </div>
+                           </div>
+                       </div>
+                </div>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<form [formGroup]="cedulaForm" class="p-2 shadow rounded flex flex-col">
+
+        <div class="w-full flex flex-col">
+
+            <mat-form-field class="">
+                <input matInput class="text_transfor" [formControlName]="'nit'" [placeholder]="'Documento'">
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:document-text'">
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class=" gt-xs:pl-3">
+                <input matInput class="text_transfor" [formControlName]="'apellido1'" [placeholder]="'Primer Apellido'"
+                >
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="">
+                <input matInput class="text_transfor" [formControlName]="'apellido2'" [placeholder]="'Segundo Apellido'"
+                >
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="">
+                <input matInput class="text_transfor" [formControlName]="'nombre1'" [placeholder]="'Primer Nombre'">
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field class=" gt-xs:pl-3">
+                <input matInput class="text_transfor" [formControlName]="'nombre2'" [placeholder]="'Segundo Nombre'">
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class=" gt-xs:pl-3">
+                <input matInput class="text_transfor" [placeholder]="'Sexo'">
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class=" gt-xs:pl-3">
+                <input matInput class="text_transfor" [formControlName]="'fechaCumpleanio'" [placeholder]="'fecha'">
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class=" gt-xs:pl-3">
+                <input matInput class="text_transfor" [placeholder]="'Tipo Sangre'">
+                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="flex justify-end">
+            <button (click)="close()" class="px-8" mat-flat-button [color]="'primary'" type="button">
+                Aceptar
+            </button>
+        </div>
+    </form>

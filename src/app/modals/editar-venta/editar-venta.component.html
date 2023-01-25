@@ -1,0 +1,33 @@
+<div class="flex flex-col  max-h-screen -m-6">
+    <div 
+        class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <h2 class="text-lg font-medium">Editar {{item}} </h2>
+        <button (click)="close()" mat-icon-button [tabIndex]="-1">
+            <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+    
+    <br>
+
+    <div class="p-2">
+        <div fxLayout="column" class=" pr-3 sm:pr-5 pl-6 sm:pl-8" class="cont-content-modal">
+
+            <div class="cont-table">
+                <div class="flex flex-col w-full sm:p-1">
+                    <mat-form-field class="w-full">
+                        <mat-label>{{item}}</mat-label>
+                        <!-- <span matSuffix>lbs.</span> -->
+                        <input type="number" matInput [formControlName]="'weight'">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    
+        <div class="flex items-center mt-auto justify-center">
+            <button  [routerLink]="['/factura']" color="primary" class="ml-2" mat-flat-button>
+                Guardar
+            </button>
+        </div>
+    </div>
+
+</div>

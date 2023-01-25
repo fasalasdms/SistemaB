@@ -1,0 +1,47 @@
+<div class="w-full justify-center" *ngIf="dataTipo == 1">
+    <img src="/assets/images/alerta.png" alt=""/>
+        <p class="text-center text-3xl font-bold">Oops... Ocurrio un Error,<br>
+            {{dataError[2]}}, {{errorOrigen}}
+            </p>
+            <button class="px-8 w-full justify-center" (click)="close()" mat-flat-button [color]="'primary'" type="button">
+                Cerrar
+        </button>
+</div>
+<div class="w-full justify-center" *ngIf="dataTipo == 2">
+    <img  style="padding: 0px 50px;" src="/assets/images/aceptado.png" alt=""/>
+        <p class="text-center text-3xl font-bold">Cliente Guardado Con Exito!<br>
+        </p>
+        <br>
+            <button class="px-8 w-full justify-center" (click)="close(1)" mat-flat-button [color]="'primary'" type="button">
+            Aceptar
+    </button>
+</div>
+<div class="w-full justify-center" *ngIf="dataTipo == 3">
+    <img style="padding: 5px 80px;" src="/assets/images/alerta.png" alt="" />
+    <p class="text-center text-2xl font-bold">El cliente {{dataCliente[0].razon_social}} tiene {{dataCliente.length}} contactos!<br>
+    </p>
+    <br>
+    <form [formGroup]="cliente" class="p-2 shadow rounded overflow-hidden">
+        <mat-form-field class="w-full">
+            <!-- <mat-select [formControlName]="'clientSelect'" [placeholder]="'Seleccione el contacto'"> -->
+                <input type="text"
+                placeholder="Escriba el Nombre del Contacto"
+                matInput
+                [formControl]="myControl"
+                [matAutocomplete]="auto"
+                >
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let data of filteredOptions | async" value="{{data.id_cot_cliente_contacto}}-{{data.nombre_contacto}}">
+                        {{data?.nombre_contacto}}
+                    </mat-option>
+                </mat-autocomplete>
+            <!-- </mat-select> -->
+            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+            </mat-icon>
+        </mat-form-field>
+    </form>
+    <button class="px-8 w-full justify-center" [disabled]="!cliente" (click)="saveClient()" mat-flat-button
+        [color]="'primary'" type="button">
+        Aceptar
+    </button>
+</div>

@@ -1,0 +1,14 @@
+<section class="text-center w-full p-1">
+    <div class="flex justify-center items-center flex-col w-full">
+        <form [formGroup]="campoForm" class="w-full">
+            <mat-form-field appearance="outline" class="w-full text-xl">
+                <mat-label>{{data.nombreCampo}}</mat-label>
+                <input matInput [formControlName]="'campo'">
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="mt-4">
+        <button mat-button (click)="dialogRef.close(false)" [color]="'warn'">Cancelar</button>
+        <button mat-button (click)="dialogRef.close(campoForm.value.campo)">Aceptar</button>
+    </div>
+</section>

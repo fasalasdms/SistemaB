@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <h2 class="text-2xl">Elegir lote</h2>
+    </div>
+    <form [formGroup]="loteForm" class="w-full">
+        <mat-form-field class="flex-auto w-full">
+            <mat-select [formControlName]="'lote'">
+                <mat-option *ngFor="let data of filteredOptions" [value]="data.id_cot_item_lote">
+                    {{data.lote}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <div class="flex">
+        <button (click)="dialogRef.close()" class="px-8 w-full justify-center" mat-button>
+            Aceptar
+        </button>
+        <button (click)="dialogRef.close()" class="px-8 w-full justify-center" mat-button>
+            Cancelar
+        </button>
+    </div>
+</div>

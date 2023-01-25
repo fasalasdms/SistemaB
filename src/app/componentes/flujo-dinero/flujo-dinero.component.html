@@ -1,0 +1,182 @@
+<div class="w-full mt-4 p-2 rounded-lg">
+    
+    <div class="w-full flex justify-between items-between">
+            <button (click)="cambiarModoInteraccion('sumar')" mat-stroked-button class="scale-75">
+                <mat-icon class="icon-size-4" [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+            </button>
+            <button (click)="cambiarModoInteraccion('restar')" mat-stroked-button class="scale-75">
+                <mat-icon class="icon-size-4" [svgIcon]="'heroicons_outline:minus'"></mat-icon>
+            </button>
+            <button (click)="cambiarModoInteraccion('bloqueado')" mat-stroked-button class="scale-75 bg-[#C62828]">
+                <mat-icon class="icon-size-4 text-white" [svgIcon]="'heroicons_outline:ban'"></mat-icon>
+            </button>
+            <button (click)="reiniciarCantidadesFlujo()" mat-stroked-button class="scale-75">
+                <mat-icon class="icon-size-4" [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+            </button>
+            <button (click)="cambiarModoInteraccion('editar')" mat-stroked-button class="scale-75">
+                <mat-icon class="icon-size-4" [svgIcon]="'heroicons_outline:pencil-alt'"></mat-icon>
+            </button>
+    </div>
+
+    <h2 class="text-xl font-bold text-center my-4 flex justify-center">
+        <mat-icon class="icon-size-2" [svgIcon]="'heroicons_outline:cash'"></mat-icon>
+        <span>{{flujoDinero[indiceFlujoDinero].tipo}}</span>
+    </h2>
+
+    <ng-container *ngFor="let flujo of flujoDinero">
+        <ng-container *ngIf="flujo.tipo==flujoDinero[indiceFlujoDinero].tipo">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 gap-3">
+                <div matRipple [matRippleUnbounded]="true" [matRippleColor]="'rgba(100, 181, 246, 0.2)'" *ngFor="let unidad of flujo.valores" (click)="setCantidadItemFlujo(unidad)" class="w-full bg-cover bg-center rounded-lg flex justify-end items-end font-bold cursor-pointer z-10 item-dinero" [ngStyle]="{'background-image': getImageUnidadEfectivo(unidad)}" style="aspect-ratio: 1 / 1"> <span class="px-2 rounded-lg text-white text-xl tag-valor">{{getValorK(unidad.valor)}}</span>
+                    <span class="absolute top-0 left-0 bg-[#01579B] text-white -py-1 px-1 text-sm rounded-lg">{{unidad.cantidad}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <form [formGroup]="tipoForm" class="mt-4">
+        <div class="w-full grid grid-cols-5">
+            <mat-form-field class="w-full text-md -mb-4 col-span-3">
+                <mat-select
+                matInput
+                [formControlName]="'modoPago'"
+                placeholder="Modo de pago">
+                    <mat-option *ngFor="let modo of modoPago" [value]="modo">
+                       {{modo.descripcion}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="flex flex-col justify-center text-right col-span-2">
+                <div class="text-md font-medium leading-none text-secondary">Total</div>
+                <div class="leading-none text-xl">${{flujoDineroB.total}}</div>
+            </div>
+        </div>
+    </form>
+
+    <mat-tab-group (selectedTabChange)="tabChanged($event)">
+        <mat-tab *ngFor="let pago of flujoDineroB.valores" [label]="pago.tipo=='Puntos'?pago.tipo:pago.valor?'$'+pago.valor:'P'+pago.id">
+            <div *ngIf="pago.estado==1 && pago.tipo!='Puntos'" class="p-5 relative bg-gray-100 rounded-lg">
+
+                <div class="absolute top-0 right-0 m-2">
+                    <button mat-icon-button (click)="puntosModal()">
+                        <mat-icon class="icon-size-2" [svgIcon]="'heroicons_outline:information-circle'"></mat-icon>
+                    </button>
+    
+                    <button mat-icon-button (click)="seleccionarPago(pago)">
+                        <mat-icon class="icon-size-2" [svgIcon]="'feather:corner-down-left'"></mat-icon>
+                    </button>
+                </div>
+
+                <h2 class="text-lg my-1 font-medium flex">
+                    <mat-icon class="icon-size-2 mr-1 opacity-50" [svgIcon]="'heroicons_solid:cash'"></mat-icon>
+                    <span>Flujo</span>
+                </h2>
+                <form [formGroup]="formaPagoForm">
+                    <mat-form-field class="w-full text-md -mb-4">
+                        <mat-select
+                        matInput
+                        [formControlName]="'tipoPago'"
+                        placeholder="Tipo de pago">
+                            <mat-option *ngFor="let tipo of tipoPago" [value]="tipo">
+                                {{tipo.descripcion}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+        
+                    <mat-form-field class="w-full text-lg">
+                        <input
+                        matInput
+                        [formControlName]="'valor'"
+                        placeholder="Valor">
+                        <mat-icon matSuffix svgIcon="feather:dollar-sign"></mat-icon>
+                    </mat-form-field>
+                </form>
+            </div>
+
+
+            <div *ngIf="pago.estado==2 && pago.tipo!='Puntos'" class="p-5 bg-gray-100 rounded-lg relative">
+                <button class="absolute top-0 right-0 m-1" color="warn" mat-icon-button (click)="deseleccionarPago(pago)">
+                    <mat-icon class="icon-size-2" [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+                </button>
+
+                <h2 class="text-lg my-1 font-medium flex">
+                    <mat-icon class="icon-size-2 mr-1 opacity-50" [svgIcon]="'heroicons_solid:cash'"></mat-icon>
+                    <span>Flujo</span>
+                </h2>
+
+                <div class="flex justify-row justify-between">
+                    <div class="flex flex-col my-3">
+                        <div class="text-sm font-medium leading-none text-secondary">Tipo pago</div>
+                        <div class="leading-none text-left">{{pago.tipoPagoNombre}}</div>
+                    </div>
+    
+                    <div class="flex flex-col justify-center items-center my-3">
+                        <div class="text-sm font-medium leading-none text-secondary">Valor</div>
+                        <div class="leading-none text-left text-2xl">${{pago.valor}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="pago.estado==1 && pago.tipo=='Puntos'" class="p-5 relative bg-gray-100 rounded-lg">
+
+                <div class="absolute top-0 right-0 m-2">
+                    <button mat-icon-button (click)="puntosModal()">
+                        <mat-icon class="icon-size-2" [svgIcon]="'heroicons_outline:information-circle'"></mat-icon>
+                    </button>
+    
+                    <button mat-icon-button (click)="seleccionarPago(pago)">
+                        <mat-icon class="icon-size-2" [svgIcon]="'feather:corner-down-left'"></mat-icon>
+                    </button>
+                </div>
+
+                <h2 class="text-lg my-1 font-medium flex">
+                    <mat-icon class="icon-size-2 mr-1 opacity-50" [svgIcon]="'heroicons_solid:cash'"></mat-icon>
+                    <span>Flujo</span>
+                </h2>
+
+                <div class="mt-4 grid grid-cols-4">
+                    <div class="flex flex-col my-3 col-span-2">
+                        <form [formGroup]="puntosForm">
+                            <mat-form-field class="w-full text-lg">
+                                <input
+                                matInput
+                                [formControlName]="'puntosRedimidos'"
+                                placeholder="Puntos redimir">
+                            </mat-form-field>
+                        </form>
+                    </div>
+                    <div class="flex flex-col my-3 text-right col-span-2">
+                        <div class="text-sm font-medium leading-none text-secondary">Valor</div>
+                        <div class="mt-2 font-medium text-xl leading-none">${{valorPuntos?valorPuntos:0}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div *ngIf="pago.estado==2 && pago.tipo=='Puntos'" class="p-5 bg-gray-100 rounded-lg relative">
+                <button class="absolute top-0 right-0 m-1" color="warn" mat-icon-button (click)="deseleccionarPago(pago)">
+                    <mat-icon class="icon-size-2" [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+                </button>
+
+                <h2 class="text-lg my-1 font-medium flex">
+                    <mat-icon class="icon-size-2 mr-1 opacity-50" [svgIcon]="'heroicons_solid:cash'"></mat-icon>
+                    <span>Flujo</span>
+                </h2>
+
+                <div class="flex justify-row justify-between">
+                    <div class="flex flex-col my-3">
+                        <div class="text-sm font-medium leading-none text-secondary">puntos</div>
+                        <div class="leading-none text-left">{{puntos}}</div>
+                    </div>
+    
+                    <div class="flex flex-col justify-center items-center my-3">
+                        <div class="text-sm font-medium leading-none text-secondary">Valor</div>
+                        <div class="leading-none text-left text-2xl">${{valorPuntos?valorPuntos:0}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </mat-tab>
+    </mat-tab-group>
+
+
+</div>
