@@ -50,7 +50,6 @@ import { ListaTiposComponent } from './componentes/lista-tipos/lista-tipos.compo
 import { AreaAnunciosComponent } from './componentes/area-anuncios/area-anuncios.component';
 import { AreaVentasComponent } from './componentes/area-ventas/area-ventas.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { AreaClienteComponent } from './componentes/area-cliente/area-cliente.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -105,7 +104,6 @@ const MY_DATE_FORMAT = {
         AreaVentasComponent,
         editarVentaComponent,
         clienteVentaComponent,
-        AreaClienteComponent,
         ConfirmacionModalComponent,
         EditarCampoComponent,
         AlertaModalComponent,
