@@ -23,13 +23,6 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     user: User;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-    disparador(cambio: any) {
-        this.postService.disparador.emit({
-            data: cambio
-        })
-        console.log('disparo izq, derecha', cambio)
-    }
-
     /**
      * Constructor
      */
