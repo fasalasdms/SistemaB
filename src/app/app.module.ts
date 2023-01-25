@@ -31,7 +31,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
-import { ListaProductosComponent } from './componentes/lista-productos/lista-productos.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { FuseDrawerModule } from '@fuse/components/drawer';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -91,8 +90,6 @@ const MY_DATE_FORMAT = {
         InicioComponent,
         ProductosComponent,
         HistorialComponent,
-        // NuevaVentaComponent
-        ListaProductosComponent,
         CajaComponent,
         FlujoDineroComponent,
         AreaUsuarioComponent,
