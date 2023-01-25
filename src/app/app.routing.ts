@@ -77,7 +77,6 @@ export const appRoutes: Route[] = [
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
             {path: 'inicio', loadChildren: () => import('app/pages/inicio/inicio.module').then(m => m.InicioModule)},
             {path: 'productos', loadChildren: () => import('app/pages/productos/productos.module').then(m => m.ProductosModule)},
-            {path: 'historial', loadChildren: () => import('app/pages/historial/historial.module').then(m => m.HistorialModule)},
             { path: 'nueva-venta', loadChildren: () => import('app/pages/ventas/nueva-venta/nueva-venta.module').then(m => m.NuevaVentaModule) },
             { path: 'factura', loadChildren: () => import('app/pages/ventas/factura/factura.module').then(m => m.FacturaModule) },
         ]

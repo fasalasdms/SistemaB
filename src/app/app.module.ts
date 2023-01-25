@@ -14,7 +14,6 @@ import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { ProductosComponent } from './pages/productos/productos.component';
-import { HistorialComponent } from './pages/historial/historial.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NuevaVentaComponent } from './pages/ventas/nueva-venta/nueva-venta.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -83,7 +82,6 @@ const MY_DATE_FORMAT = {
         AppComponent,
         InicioComponent,
         ProductosComponent,
-        HistorialComponent,
         editarVentaComponent,
         clienteVentaComponent,
         ConfirmacionModalComponent,
