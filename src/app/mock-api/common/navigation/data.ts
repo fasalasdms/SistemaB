@@ -22,20 +22,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:tag',
         link : '/productos'
-    },
-    {
-        id: 'venta',
-        title: 'Nueva venta',
-        type: 'basic',
-        icon: 'heroicons_outline:shopping-cart',
-        link: '/nueva-venta'
-    },
-    {
-        id   : 'historial',
-        title: 'Historial',
-        type : 'basic',
-        icon : 'heroicons_outline:clock',
-        link : '/historial'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
