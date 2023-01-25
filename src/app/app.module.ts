@@ -41,7 +41,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import {MatBadgeModule} from '@angular/material/badge';
-import { CajaComponent } from './componentes/caja/caja.component';
 import { AreaUsuarioComponent } from './componentes/area-usuario/area-usuario.component';
 import { AreaVentasComponent } from './componentes/area-ventas/area-ventas.component';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -87,7 +86,6 @@ const MY_DATE_FORMAT = {
         InicioComponent,
         ProductosComponent,
         HistorialComponent,
-        CajaComponent,
         AreaUsuarioComponent,
         AreaVentasComponent,
         editarVentaComponent,
