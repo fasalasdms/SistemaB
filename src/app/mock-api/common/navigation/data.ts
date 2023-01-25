@@ -15,13 +15,6 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type : 'basic',
         icon : 'heroicons_outline:home',
         link : '/inicio'
-    },
-    {
-        id   : 'productos',
-        title: 'Productos',
-        type : 'basic',
-        icon : 'heroicons_outline:tag',
-        link : '/productos'
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [

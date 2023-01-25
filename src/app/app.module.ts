@@ -13,7 +13,6 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { InicioComponent } from './pages/inicio/inicio.component';
-import { ProductosComponent } from './pages/productos/productos.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
@@ -79,7 +78,6 @@ const MY_DATE_FORMAT = {
     declarations: [
         AppComponent,
         InicioComponent,
-        ProductosComponent,
         editarVentaComponent,
         clienteVentaComponent,
         ConfirmacionModalComponent,
