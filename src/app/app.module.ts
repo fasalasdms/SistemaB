@@ -42,7 +42,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import {MatBadgeModule} from '@angular/material/badge';
 import { AreaUsuarioComponent } from './componentes/area-usuario/area-usuario.component';
-import { AreaVentasComponent } from './componentes/area-ventas/area-ventas.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -87,7 +86,6 @@ const MY_DATE_FORMAT = {
         ProductosComponent,
         HistorialComponent,
         AreaUsuarioComponent,
-        AreaVentasComponent,
         editarVentaComponent,
         clienteVentaComponent,
         ConfirmacionModalComponent,
