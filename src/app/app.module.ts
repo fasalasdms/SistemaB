@@ -33,7 +33,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
 import { ListaProductosComponent } from './componentes/lista-productos/lista-productos.component';
 import {MatChipsModule} from '@angular/material/chips';
-import { ListaVentasComponent } from './componentes/lista-ventas/lista-ventas.component';
 import { FuseDrawerModule } from '@fuse/components/drawer';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FacturaComponent } from './pages/ventas/factura/factura.component';
@@ -94,7 +93,6 @@ const MY_DATE_FORMAT = {
         HistorialComponent,
         // NuevaVentaComponent
         ListaProductosComponent,
-        ListaVentasComponent,
         CajaComponent,
         FlujoDineroComponent,
         AreaUsuarioComponent,
