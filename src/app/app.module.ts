@@ -65,7 +65,6 @@ import {
     MAT_DATE_LOCALE,
   } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { VistaFacturaComponent } from './componentes/vista-factura/vista-factura.component';
 import {NgxPrintModule} from 'ngx-print';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { PuntosModalComponent } from './modals/puntos-modal/puntos-modal.component';
@@ -108,7 +107,6 @@ const MY_DATE_FORMAT = {
         EditarCampoComponent,
         AlertaModalComponent,
         IngresoRapidoComponent,
-        VistaFacturaComponent,
         PuntosModalComponent,
         LotesModalComponent,
         // FacturaComponent

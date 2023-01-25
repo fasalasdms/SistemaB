@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarCampoComponent } from 'app/modals/editar-campo/editar-campo.component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'app/services/api.service';
-import { VistaFacturaComponent } from '../vista-factura/vista-factura.component';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { PuntosModalComponent } from 'app/modals/puntos-modal/puntos-modal.component';
 
