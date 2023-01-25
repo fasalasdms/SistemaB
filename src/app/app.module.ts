@@ -44,7 +44,6 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { CajaComponent } from './componentes/caja/caja.component';
 import { FlujoDineroComponent } from './componentes/flujo-dinero/flujo-dinero.component';
 import { AreaUsuarioComponent } from './componentes/area-usuario/area-usuario.component';
-import { ListaTiposComponent } from './componentes/lista-tipos/lista-tipos.component';
 import { AreaAnunciosComponent } from './componentes/area-anuncios/area-anuncios.component';
 import { AreaVentasComponent } from './componentes/area-ventas/area-ventas.component';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -93,7 +92,6 @@ const MY_DATE_FORMAT = {
         CajaComponent,
         FlujoDineroComponent,
         AreaUsuarioComponent,
-        ListaTiposComponent,
         AreaAnunciosComponent,
         AreaVentasComponent,
         editarVentaComponent,
