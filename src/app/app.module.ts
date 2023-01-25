@@ -49,7 +49,6 @@ import { AreaUsuarioComponent } from './componentes/area-usuario/area-usuario.co
 import { ListaTiposComponent } from './componentes/lista-tipos/lista-tipos.component';
 import { AreaAnunciosComponent } from './componentes/area-anuncios/area-anuncios.component';
 import { AreaVentasComponent } from './componentes/area-ventas/area-ventas.component';
-import { TotalesComponent } from './componentes/totales/totales.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AreaClienteComponent } from './componentes/area-cliente/area-cliente.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -106,7 +105,6 @@ const MY_DATE_FORMAT = {
         AreaVentasComponent,
         editarVentaComponent,
         clienteVentaComponent,
-        TotalesComponent,
         AreaClienteComponent,
         ConfirmacionModalComponent,
         EditarCampoComponent,
