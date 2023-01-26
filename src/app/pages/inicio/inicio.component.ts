@@ -35,18 +35,18 @@ export class InicioComponent implements OnInit {
   dataLength = this.dataSource.length;
 
   pedidoForm = this._formBuilder.group({
-    idBodega     : [, [Validators.required]],
-    idCliente     : [, [Validators.required]],
-    idTipoPedido     : [, [Validators.required]],
-    idFormaPago     : [, [Validators.required]],
-    idContacto     : [, [Validators.required]],
-    subTotal     : [, [Validators.required]],
-    descuento     : [, [Validators.required]],
-    iva     : [, [Validators.required]],
-    total     : [, [Validators.required]],
-    notas     : [, [Validators.required]],
-    notasInternas     : [, [Validators.required]],
-    ipoComsumo     : [, [Validators.required]],
+    idBodega     : [, []],
+    idCliente     : [, []],
+    idTipoPedido     : [, []],
+    idFormaPago     : [, []],
+    idContacto     : [, []],
+    subTotal     : [, []],
+    descuento     : [, []],
+    iva     : [, []],
+    total     : [, []],
+    notas     : [, []],
+    notasInternas     : [, []],
+    ipoComsumo     : [, []],
   });
 
   archivoForm = this._formBuilder.group({

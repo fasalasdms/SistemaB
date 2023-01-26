@@ -20,10 +20,6 @@
                             </mat-icon>
                         <div class="absolute left-0 bottom-0 px-1.5 rounded text-sm font-semibold leading-5 text-white bg-green-600"> XLS </div></div></div></div><div class="flex flex-col flex-auto justify-center text-center text-sm font-medium"><div class="mat-mdc-tooltip-trigger truncate" aria-describedby="cdk-describedby-message-dfg-1-73" cdk-describedby-host="dfg-1">{{archivoSeleccionado?archivoSeleccionado.name:'Seleccionar'}}</div><!----><!----></div></div>
 
-
-            <div class="absolute bottom-0 right-0 p-5">
-                <button mat-button>Enviar</button>
-            </div>
         </div>
 
         <div class="bg-card shadow rounded-2xl p-4">
@@ -76,23 +72,6 @@
 
                     <div class="grid grid-cols-2 gap-2 -mb-2">
                         <mat-form-field class="w-full text-lg">
-                            <mat-select
-                            matInput
-                            [formControlName]="'idContacto'"
-                            placeholder="idContacto">
-                                <mat-option [value]="1">fghgfhfgh</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field class="w-full text-lg">
-                            <input
-                            matInput
-                            [formControlName]="'subTotal'"
-                            placeholder="subTotal">
-                        </mat-form-field>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2 -mb-2">
-                        <mat-form-field class="w-full text-lg">
                             <input
                             matInput
                             [formControlName]="'descuento'"
@@ -135,7 +114,21 @@
                             placeholder="ipoComsumo">
                         </mat-form-field>
                     </div>
+
+                    <div class="grid grid-cols-2 gap-2 -mb-2">
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'subTotal'"
+                            placeholder="subTotal">
+                        </mat-form-field>
+                    </div>
+
             </form>
+
+            <div class="flex justify-end my-2">
+                <button mat-button>Enviar</button>
+            </div>
         </div>
     </div>
 </div>
