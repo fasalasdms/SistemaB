@@ -1,0 +1,101 @@
+<form *ngIf="dataSource == undefined" [formGroup]="clienteForm">
+    <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-4">
+        <mat-form-field class="flex-auto gt-xs:pr-3">
+            <input (keyup.enter)="onEnterNit($event)" (blur)="onEnterNit($event)" matInput
+                [formControlName]="'nit'" [placeholder]="'buscar por nit'">
+            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_outline:hashtag'">
+            </mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-auto gt-xs:pl-3">
+            <input (keyup.enter)="onEnterRazon($event)" (blur)="onEnterRazon($event)" matInput
+                [formControlName]="'razon'" [placeholder]="'buscar por nombre'">
+            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+            </mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-auto gt-xs:pr-3">
+            <input (keyup.enter)="onEnterCorreo($event)" (blur)="onEnterCorreo($event)" matInput
+                [formControlName]="'correo'" [placeholder]="'buscar por Correo'">
+            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_outline:at-symbol'">
+            </mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-auto gt-xs:pl-3">
+            <input (keyup.enter)="onEnterTelefono($event)" (blur)="onEnterTelefono($event)" matInput
+                [formControlName]="'telefono'" [placeholder]="'buscar por Telefono'">
+            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_outline:phone'">
+            </mat-icon>
+        </mat-form-field>
+    </div>
+</form>
+  
+<!--
+<mat-button-toggle-group name="fontStyle" class="pb-4" aria-label="Font Style">
+   <mat-button-toggle (click)="ClienteFuncion(1)" value="bold">Ver Cliente</mat-button-toggle>
+   <mat-button-toggle (click)="ClienteFuncion(2)" value="italic">Crear Cliente</mat-button-toggle>
+   <mat-button-toggle (click)="ClienteFuncion(3)" value="underline">Detalle cliente</mat-button-toggle>
+</mat-button-toggle-group>
+-->
+
+<div *ngIf="verCliente == true">
+   <div class="flex flex-col w-full p-2 justify-center items-center rounded-xl bg-gray-100 bg-card">
+       <span
+           class="mr-2 text-1xl sm:text-2xl"><strong>Cliente:</strong> {{dataSource?.razon_social}}</span>
+       <span
+           class="ml-2 text-1xl sm:text-2xl"><strong>Documento:</strong> {{dataSource?.nit}}</span>       
+       <button (click)="restar()" mat-icon-button >
+           <mat-icon [ngStyle]="{'color': dataSource === undefined ? 'grey' : 'red' }" class="
+               icon-size-2" [svgIcon]="'heroicons_outline:trash'">
+           </mat-icon>
+       </button>
+   </div>
+
+   <div class="flex justify-center my-2">
+        <button mat-button>Guardar</button>
+        <button mat-button>Cancelar</button>
+   </div>
+   
+</div>
+
+<div class="mb-2" *ngIf="crearCliente == true">
+   <app-cliente-venta-modal-servicio></app-cliente-venta-modal-servicio>
+</div>
+
+<div *ngIf="detalleCliente == true">
+   <div class="w-full grid gap-2 grid-cols-1 sm:grid-cols-2">
+       <div class="bg-card bg-gray-100 p-2 rounded-xl">
+           <div class="w-full flex justify-between">
+               <h2 class="mb-2 text-lg font-medium leading-6 truncate">Infomacion Cliente</h2>
+           </div>
+           <div><span
+                   class="mr-1 font-medium leading-6 truncate">Cliente:</span>{{dataSource?.razon_social}}
+           </div>
+           
+           <div><span
+                   class="mr-1 font-medium leading-6 truncate">Documento:</span>{{dataSource?.nit}}
+           </div>
+           
+           <div><span
+                   class="mr-1 font-medium leading-6 truncate">Telefono:</span>{{dataSource?.telefono}}
+           </div>
+           
+           <div><span
+                   class="mr-1 font-medium leading-6 truncate">Correo:</span>{{dataSource?.email}}
+           </div>
+           
+           <div><span
+               class="mr-1 font-medium leading-6 truncate">Contacto:</span>{{dataSource?.nombre_contacto}}
+           </div>
+
+       </div>
+
+       <div class="bg-card bg-gray-100 p-2 rounded-xl flex flex-col justify-between items-between">
+           <div class="w-full flex justify-between">
+               <h2 class="mb-2 text-lg font-medium leading-6 truncate">Puntos Obtenidos</h2>
+           </div>
+           <div class="flex justify-between w-full">
+               <div><span class="text-3xl font-bold">{{dataSource?.puntos}}</span> Puntos</div>
+               <div><span class="text-3xl font-bold">{{dataSource?.cupo_credito}}</span> Cupo</div>
+           </div>
+       </div>
+       
+   </div>
+</div>
