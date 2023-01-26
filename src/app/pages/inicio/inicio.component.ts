@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertaModalComponent } from 'app/modals/alerta-modal/alerta-modal.component';
+import { AreaClientesComponent } from 'app/modals/area-clientes/area-clientes.component';
 import { ApiService } from 'app/services/api.service';
 import { PosService } from 'app/services/pos.service';
 import { map } from 'rxjs/operators';
@@ -71,9 +72,6 @@ export class InicioComponent implements OnInit {
   getClientes(){
     this._apiService.getQuery("apiUrlClientes","cliente",``).subscribe(async(res:any)=>{
       this.dataClientes=await res;
-      if(res.length>0){
-        this.abrirAlertaModal(res, 3)
-      }
     });
   }
 
@@ -99,17 +97,13 @@ export class InicioComponent implements OnInit {
     this.archivoSeleccionado=await fileInputEvent.target.files[0];
   }
 
-  
-  abrirAlertaModal(datos: any = null, tipo) {
 
-    const dialogRef = this.dialog.open(AlertaModalComponent, {
-      width: '350px',
+  abrirAreaClientesModal(){
+
+    const dialogRef = this.dialog.open(AreaClientesComponent, {
+      minWidth: '500px',
       height: 'auto',
-      maxHeight: '850px',
-      data: {
-        cliente: datos,
-        tipo: tipo
-        }
+      maxHeight: '850px'
       }
     );
 
@@ -135,7 +129,14 @@ export class InicioComponent implements OnInit {
     );
   }
 
+  getClienteSeleccionado(){
+    this.PostService.getCliente().subscribe((data)=>{
+      console.log("Cliente seleccionado =>", data);
+    });
+  }
+
   ngOnInit(): void {
+    this.getClienteSeleccionado();
     this.getBodegas();
     this.getClientes();
     this.getTipoFactura();

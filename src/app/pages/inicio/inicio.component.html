@@ -44,14 +44,15 @@
                                 <mat-option *ngFor="let bodega of dataBodegas" [value]="bodega.id">{{bodega?.descripcion}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <mat-form-field class="w-full text-lg">
+                        <!--<mat-form-field class="w-full text-lg">
                             <mat-select
                             matInput
                             [formControlName]="'idCliente'"
                             placeholder="idCliente">
                             <mat-option *ngFor="let cliente of dataClientes" [value]="cliente.id">{{cliente?.razon_social}}</mat-option>
                         </mat-select>
-                        </mat-form-field>
+                        </mat-form-field>-->
+                        <button mat-button (click)="abrirAreaClientesModal()">Usuario</button>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2 -mb-2">
@@ -134,12 +135,7 @@
                             placeholder="ipoComsumo">
                         </mat-form-field>
                     </div>
-
             </form>
-
-            <div class="flex justify-end my-2">
-                <button mat-button>Enviar</button>
-            </div>
         </div>
     </div>
 </div>

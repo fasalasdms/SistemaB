@@ -58,6 +58,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { PuntosModalComponent } from './modals/puntos-modal/puntos-modal.component';
 import { LotesModalComponent } from './modals/lotes-modal/lotes-modal.component';
 import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { AreaClientesComponent } from './modals/area-clientes/area-clientes.component';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -86,7 +87,8 @@ const MY_DATE_FORMAT = {
         AlertaModalComponent,
         IngresoRapidoComponent,
         PuntosModalComponent,
-        LotesModalComponent
+        LotesModalComponent,
+        AreaClientesComponent
     ],
     imports     : [
         BrowserModule,
