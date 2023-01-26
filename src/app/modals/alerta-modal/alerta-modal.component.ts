@@ -15,13 +15,9 @@ import { map, Observable, startWith } from 'rxjs';
 export class AlertaModalComponent {
     
   dataTipo: any;
-  
   error: any;
-  
   errorOrigen: any;
-  
   dataError: any;
-  
   detallado: any;
   
   cliente: FormGroup;
@@ -54,7 +50,6 @@ export class AlertaModalComponent {
       
     }
 
-    
     ngOnInit() {
         
       this.dataTipo = this.data.tipo

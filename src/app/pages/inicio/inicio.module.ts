@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MatRippleModule } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ClientesComponent } from 'app/componentes/clientes/clientes.component';
 
 const inicioRoutes: Route[] = [
     {

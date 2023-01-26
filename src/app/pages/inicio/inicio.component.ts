@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertaModalComponent } from 'app/modals/alerta-modal/alerta-modal.component';
 import { ApiService } from 'app/services/api.service';
 import { PosService } from 'app/services/pos.service';
 import { map } from 'rxjs/operators';
@@ -31,104 +33,113 @@ export class InicioComponent implements OnInit {
   dataSource = data;
   dataLength = this.dataSource.length;
 
-  filtroForm = this._formBuilder.group({
-    nombre     : [, [Validators.required]],
-    codigo     : [, [Validators.required]],
-  });
-
-  productoDetalleForm = this._formBuilder.group({
-    cantidad     : [, [Validators.required]],
+  pedidoForm = this._formBuilder.group({
+    idBodega     : [, [Validators.required]],
+    idCliente     : [, [Validators.required]],
+    idTipoPedido     : [, [Validators.required]],
+    idFormaPago     : [, [Validators.required]],
+    idContacto     : [, [Validators.required]],
+    subTotal     : [, [Validators.required]],
+    descuento     : [, [Validators.required]],
+    iva     : [, [Validators.required]],
     total     : [, [Validators.required]],
+    notas     : [, [Validators.required]],
+    notasInternas     : [, [Validators.required]],
+    ipoComsumo     : [, [Validators.required]],
   });
 
-  producto: any;
-  imagenProduto: any;
-  isExpanded: boolean;
-  flujoDinero: any;
-  cajaVisible: any;
+  archivoForm = this._formBuilder.group({
+    archivo     : [, [Validators.required]]
+  });
 
-  constructor(private _formBuilder: FormBuilder, private PostService: PosService, private _apiService: ApiService) { }
+  dataBodegas: any;
+  dataClientes: any;
+  modoPago: any;
+  dataTipoFactura: any;
+  archivoSeleccionado: any;
 
-  setcajaVisible(){
-    if (this.cajaVisible == true) {
-      this.PostService.setCajaVisible$(false);
-    }else{
-      this.PostService.setCajaVisible$(true);
-    }
+  constructor(private _formBuilder: FormBuilder, private PostService: PosService, private _apiService: ApiService, public dialog: MatDialog) { }
+
+  
+  getBodegas(){
+    this._apiService.getQuery("apiUrlBodegas","bodega",``).subscribe(async(res:any)=>{
+      await console.log("Bodegas >", res);
+      this.dataBodegas=await res.result;
+    });
   }
 
-  getColumnas(){
-    if (this.cajaVisible) {
-      return 'repeat(4, minmax(0, 1fr))';
-    }else{
-      return 'repeat(10, minmax(0, 1fr))';
-    }
+  getClientes(){
+    this._apiService.getQuery("apiUrlClientes","cliente",``).subscribe(async(res:any)=>{
+      this.dataClientes=await res;
+      if(res.length>0){
+        this.abrirAlertaModal(res, 3)
+      }
+    });
   }
 
-  setSpanCaja(valorInicial,valorFinal){
-    if (this.cajaVisible) {
-      return `span ${valorInicial} / span ${valorInicial}`;
-    }else{
-      return `span ${valorFinal} / span ${valorFinal}`;
-    }
+  getTipoFactura(){
+    this._apiService.getQuery("apiUrlFacturacion","factura/tipoFactura",``).subscribe(async(res:any)=>{
+      this.dataTipoFactura = await res.result;
+    });
+  }
+
+  getFormaPago(){
+    this._apiService.getQuery("apiUrlFacturacion","factura/tipoFactura",``).subscribe(async(res:any)=>{
+      this.dataClientes=await res;
+    });
+  }
+
+  getModosPago(){
+    this._apiService.getQuery("apiUrlFacturacion","Factura/FormaPago","").subscribe(async (res:any)=>{
+      this.modoPago = await res.result;
+    });
+  }
+
+  async CambioInputArchivo(fileInputEvent: any) {
+    this.archivoSeleccionado=await fileInputEvent.target.files[0];
+  }
+
+  
+  abrirAlertaModal(datos: any = null, tipo) {
+
+    const dialogRef = this.dialog.open(AlertaModalComponent, {
+      width: '350px',
+      height: 'auto',
+      maxHeight: '850px',
+      data: {
+        cliente: datos,
+        tipo: tipo
+        }
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+
+      /*if (result) {
+
+          let contactoSelect = this.clienteContacto.filter( clienteContacto =>
+          
+          clienteContacto.id_cot_cliente_contacto == result
+          
+        )
+      
+          this.dataSource = contactoSelect[0]
+          
+          this.posService.setCliente$(contactoSelect[0]);
+
+      }
+
+      if (!result) return;
+
+    */}
+    );
   }
 
   ngOnInit(): void {
-    this.PostService.disparador.subscribe(result => {
-      this.rightToLeft = result.data
-      this.Mover()
-      console.log('recibiendo', result.data)
-    })
-    this.PostService.getProductoLista().subscribe((data) => {
-      this.producto = data;
-      this.getImageProducto(this.producto);
-      //console.log(this.imagenProduto)
-    });
-
-    this._apiService.getQuery("apiUrlBodegas","Bodega","").subscribe((res)=>{
-    });
-
-    this._apiService.getQuery("apiUrlProductos","Producto/Buscar/1","itemBuscar=3").subscribe((res)=>{
-    });
-
-    this.PostService.getCajaVisible$().subscribe((data)=>{
-      this.cajaVisible = data;
-    });
-
-  }
-
-  public rightToLeft: boolean;
-
-  Mover() {
-    this.rightToLeft = !this.rightToLeft;
-    document.body.dir = this.rightToLeft ? 'rtl' : '';
-  }
-  //Ventas
-
-  ventas = [
-    {
-      nombre:"Vent1"
-    },
-    {
-      nombre:"Vent2"
-    },
-    {
-      nombre:"Vent3"
-    },
-    {
-      nombre:"Vent4"
-    },
-    {
-      nombre:"Vent5"
-    }
-  ];
-
-  getImageProducto(producto:any){
-    return this.imagenProduto = `url("assets/images/products/${producto?.imagen}.jpg")` 
-  }
-
-  noStockGray(stock){
-    return stock>0?"grayscale(0)":"grayscale";
+    this.getBodegas();
+    this.getClientes();
+    this.getTipoFactura();
+    this.getModosPago();
   }
 
 }

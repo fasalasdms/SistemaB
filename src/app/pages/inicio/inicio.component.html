@@ -1,3 +1,145 @@
-<div>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit magni nesciunt quam esse aspernatur, quo aut sequi, quis, dicta et eius quas? Quas excepturi aperiam quasi hic tempore iste ea.
+<div class="flex justify-center items-center p-20">
+    <div class="grid grid-cols-2 gap-4">
+        <div class="bg-card shadow rounded-2xl p-4 relative">
+            <div class="mb-10">
+                <div class="text-3xl font-semibold tracking-tight leading-8">Subir Excel</div>
+                <div class="font-medium tracking-tight text-secondary">Click en el documento y selecciona el archivo que desea subir</div>
+            </div>
+
+            <form [formGroup]="archivoForm" class="hidden">
+                <input #inputArchivo accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" (change)="CambioInputArchivo($event)" [formControlName]="'archivo'" placeholder="notasInternas" type="file">
+           </form>
+            <div (click)="inputArchivo.click()" class="flex flex-col w-30 h-30 m-2 p-4 rounded-2xl cursor-pointer bg-indigo-50 ng-star-inserted">
+                <div class="aspect-[9/6]">
+                    <div class="flex items-center justify-center h-full">
+                        <div class="relative">
+                            <mat-icon role="img" class="mat-icon notranslate icon-size-14 text-hint opacity-50 mat-icon-no-color" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="document" data-mat-icon-namespace="heroicons_solid">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </mat-icon>
+                        <div class="absolute left-0 bottom-0 px-1.5 rounded text-sm font-semibold leading-5 text-white bg-green-600"> XLS </div></div></div></div><div class="flex flex-col flex-auto justify-center text-center text-sm font-medium"><div class="mat-mdc-tooltip-trigger truncate" aria-describedby="cdk-describedby-message-dfg-1-73" cdk-describedby-host="dfg-1">{{archivoSeleccionado?archivoSeleccionado.name:'Seleccionar'}}</div><!----><!----></div></div>
+
+
+            <div class="absolute bottom-0 right-0 p-5">
+                <button mat-button>Enviar</button>
+            </div>
+        </div>
+
+        <div class="bg-card shadow rounded-2xl p-4">
+            <div class="mb-10">
+                <div class="text-3xl font-semibold tracking-tight leading-8">Pedido</div>
+                <div class="font-medium tracking-tight text-secondary">Rellena el formulario para hacer tu pedido</div>
+            </div>
+
+            <form [formGroup]="pedidoForm">
+                
+
+                    <div class="grid grid-cols-2 gap-2 -mb-2">
+                        <mat-form-field class="w-full text-lg">
+                            <mat-select
+                            matInput
+                            [formControlName]="'idBodega'"
+                            placeholder="idBodega">
+                                <mat-option *ngFor="let bodega of dataBodegas" [value]="bodega.id">{{bodega?.descripcion}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="w-full text-lg">
+                            <mat-select
+                            matInput
+                            [formControlName]="'idCliente'"
+                            placeholder="idCliente">
+                            <mat-option *ngFor="let cliente of dataClientes" [value]="cliente.id">{{cliente?.razon_social}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 -mb-2">
+                        <mat-form-field class="w-full text-lg">
+                            <mat-select
+                            matInput
+                            [formControlName]="'idTipoPedido'"
+                            placeholder="idTipoPedido">
+                                <mat-option *ngFor="let tipo of dataTipoFactura" [value]="tipo.id">{{tipo.descripcion}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="w-full text-lg">
+                            <mat-select
+                            matInput
+                            [formControlName]="'idFormaPago'"
+                            placeholder="idFormaPago">
+                                <mat-option *ngFor="let modo of modoPago" [value]="modo?.id">{{modo?.descripcion}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 -mb-2">
+                        <mat-form-field class="w-full text-lg">
+                            <mat-select
+                            matInput
+                            [formControlName]="'idContacto'"
+                            placeholder="idContacto">
+                                <mat-option [value]="1">fghgfhfgh</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'subTotal'"
+                            placeholder="subTotal">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 -mb-2">
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'descuento'"
+                            placeholder="descuento">
+                        </mat-form-field>
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'iva'"
+                            placeholder="iva">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 -mb-2">
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'total'"
+                            placeholder="total">
+                        </mat-form-field>
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'notas'"
+                            placeholder="notas">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 -mb-2">
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'notasInternas'"
+                            placeholder="notasInternas">
+                        </mat-form-field>
+                        <mat-form-field class="w-full text-lg">
+                            <input
+                            matInput
+                            [formControlName]="'ipoComsumo'"
+                            placeholder="ipoComsumo">
+                        </mat-form-field>
+                    </div>
+
+            </form>
+
+            <div class="flex justify-end my-2">
+                <button mat-button>Enviar</button>
+            </div>
+        </div>
+    </div>
 </div>

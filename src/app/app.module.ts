@@ -57,6 +57,7 @@ import {NgxPrintModule} from 'ngx-print';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { PuntosModalComponent } from './modals/puntos-modal/puntos-modal.component';
 import { LotesModalComponent } from './modals/lotes-modal/lotes-modal.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -85,8 +86,7 @@ const MY_DATE_FORMAT = {
         AlertaModalComponent,
         IngresoRapidoComponent,
         PuntosModalComponent,
-        LotesModalComponent,
-        // FacturaComponent
+        LotesModalComponent
     ],
     imports     : [
         BrowserModule,
